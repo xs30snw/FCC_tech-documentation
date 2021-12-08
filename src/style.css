@@ -1,0 +1,184 @@
+:root {
+    --col-li: #B9FFB7;
+    --col-nl: #ABEDC6;
+    --col-nu: #98D9C2;
+    --col-nd: #F19A3E;
+    --col-da: #403233;
+
+    --font-main: 'Rokkitt', serif;
+    --font-mono: 'Ubuntu Mono', monospace;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-family: var(--font-main);
+    font-size: 22px;
+    color: var(--col-da);
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    background-color: var(--col-nl);
+    display: grid;
+    grid-template-columns: 1fr;
+    counter-reset: section;
+}
+
+nav {
+    background-color: var(--col-nu);
+    display: flex;
+    flex-direction: column;
+    /* padding: 1rem 1rem 1rem 0.5rem; */
+}
+
+nav h1 span {
+    color: var(--col-nd);
+}
+
+nav h1,
+nav h3,
+nav ul {
+    text-align: center;
+    padding: 1rem 1rem 1rem 0.5rem;
+    background-color: var(--col-da);
+    color: var(--col-nu);
+}
+
+nav h1 {
+    font-size: 1.7rem;
+}
+
+nav ol {
+    margin: 0rem 1rem 0rem 0.5rem;
+}
+
+nav ol li {
+    margin: 0.7rem 0;
+}
+
+a:hover {
+    color: var(--col-nd);
+}
+
+a {
+    display: inline;
+    text-decoration: underline dashed;
+    color: inherit;
+}
+
+main {
+    background-color: var(--col-nl);
+    padding: 1rem;
+}
+
+.main-section + .main-section {
+    margin-top: 2rem;
+}
+
+.main-section:not(:last-of-type)::after {
+    content:"";
+    display: block;
+    background-color: var(--col-nu);
+    height: 0.1rem;
+    width: 50%;
+    margin-left: 1rem;
+    margin-top: 0.5rem;
+}
+
+h2 {
+    margin-bottom: 1rem;
+    text-indent: 1rem;
+    text-align: center;
+}
+
+h2::before {
+    counter-increment: section;
+    content: counter(section) ". ";
+}
+
+p {
+    text-indent: 1rem;
+    text-align: justify;
+}
+
+p + p {
+    margin-top: 0.3rem;
+}
+
+code {
+    font-family: var(--font-mono);
+}
+
+section > code {
+    display: block;
+    white-space: pre-wrap;
+    background-color: var(--col-li);
+    border-radius: 0.2rem;
+    border-width: 0.05rem;
+    border-style: solid;
+    border-color: var(--col-nu);
+    padding: 0.5rem 1rem;
+    margin: 0.5rem 0;
+}
+
+p > code {
+    color: var(--col-nd)
+}
+
+section > code:hover {
+    border-color: var(--col-nd);
+}
+
+section > code:focus {
+    border-color: var(--col-nd);
+}
+
+footer {
+    background-color: var(--col-da);
+    color: var(--col-nu);
+}
+
+footer p {
+    text-align: center;
+    margin: auto;
+    padding: 1rem;
+}
+
+footer em {
+    color: var(--col-nd);
+}
+
+@media (min-width: 900px) {
+    body {
+        grid-template-columns: 1fr 3fr;
+    }
+
+    h2 {
+        text-align: left;
+    }
+
+    h2, 
+    p {
+        width: 85%;
+    }
+
+    footer {
+        grid-column: 1/-1;
+    }
+}
+
+@media (min-width: 1200px) {
+    body {
+        width: 80%;
+        margin: auto;
+        border-left: 1px solid var(--col-da);
+    }
+
+    #main-doc {
+        border-right: 1px solid var(--col-nu);
+    }
+}

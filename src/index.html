@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title id="title">Technical Documentation Page</title>
+
+        <link href="https://fonts.googleapis.com/css2?family=Rokkitt&family=Ubuntu+Mono" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+
+        <nav id="navbar">
+            <header>
+                <h1>
+                    <span>Algorithms</span> in Computer Science.
+                </h1>
+            </header>
+            <ol>
+                <li>
+                    <a class="nav-link" href="#What_is_a_programming_algorithm?">What is a programming algorithm?</a>
+                </li>
+                <li>
+                    <a class="nav-link" href="#What_problems_algorithms_solve.">What problems algorithms solve.</a>
+                </li>
+                <li>
+                    <a class="nav-link" href="#Solving_a_sorting_problem_with_Bubble_sort.">Solving a sorting problem with Bubble sort.</a>
+                </li>
+                <li>
+                    <a class="nav-link" href="#How_Bubble_sort_works.">How Bubble sort works.</a>
+                </li>
+                <li>
+                    <a class="nav-link" href="#References_and_further_reading.">References and further reading.</a>
+                </li>
+            </ol>
+        </nav>
+
+        <main id="main-doc">
+            <section id="What_is_a_programming_algorithm?" class="main-section">
+                <header>
+                    <h2>What is a programming algorithm?</h2>
+                </header>
+                <p>
+                    An algorithm is any procedure, that takes a set of values as input and produces another set of values as output.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias nihil repellat vitae ea inventore! Magnam.
+                </p>
+                <p>
+                    Good algorithm is:
+                </p>
+                <ul>
+                    <li>correct,</li>
+                    <li>efficient,</li>
+                    <li>predictable,</li>
+                    <li>reproducible,</li>
+                    <li>simple, easy to implement.</li>
+                </ul>
+            </section>
+            <section id="What_problems_algorithms_solve." class="main-section">
+                <header>
+                    <h2>
+                        What problems algorithms solve.
+                    </h2>
+                </header>
+                <p>
+                    Algorithm solves a specific problem.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum aliquam blanditiis rem inventore, consequatur nemo exercitationem assumenda expedita culpa illo!
+                </p>
+                <p>
+                    For example, we have an array of values, e.g.:
+                </p>
+                <code tabindex="-1">1, 6, 5, 4, 8</code>
+                <p>
+                    We might want to have a specific algorithm, that will sort them in increasing order, and return the output:
+                </p>
+                <code tabindex="-1">1, 4, 5, 6, 8</code>
+                <p>
+                    The problem mentioned above is trivial, and programmers have many ways to sort a set of 5 numbers without much concern for resources.
+                    But when we work not with five, but thousands and millions of numbers, the algorithm complexety matters, and different algorithms produce different calculation speeds.
+                </p>   
+            </section>
+            <section id="Solving_a_sorting_problem_with_Bubble_sort." class="main-section">
+                <header>
+                    <h2>
+                        Solving a sorting problem with Bubble sort.
+                    </h2>
+                </header>
+                <p>
+                    One of the easiest algorithm to implement and understand how it works is Bubble sort.
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum, itaque?
+                    Bubble sort in pseudo code looks like this:
+                </p>
+                <code tabindex="-1">procedure bubbleSort(A : list of sortable items)
+  n := length(A)
+  repeat
+      swapped := false
+      for i := 1 to n-1 inclusive do
+          /* if this pair is out of order */
+          if A[i-1] > A[i] then
+              /* swap them and remember something changed */
+              swap(A[i-1], A[i])
+              swapped := true
+          end if
+      end for
+  until not swapped
+end procedure</code>
+            </section>
+            <section id="How_Bubble_sort_works." class="main-section">
+                <header>
+                    <h2>
+                        How Bubble sort works.
+                    </h2>
+                </header>
+                <p>
+                    Function <code>swap</code> swaps two consecutive numbers each pass, if the first number is larger than the second one.
+                    If there is at least one execution of the swap function, the variable <code>swapped</code> is assigned the boolean value <code>True</code>, and the loop repeats.
+                    If there is nothing left to swap, the algorithm stops.
+                </p>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae tempore maiores ratione quis dolorum, perferendis error numquam velit in libero eius quos facere asperiores assumenda quo possimus repellat iure quasi.
+                </p>
+            </section>
+            <section id="References_and_further_reading." class="main-section">
+                <header>
+                    <h2>
+                        References and further reading.
+                    </h2>
+                </header>
+                <p>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corporis nobis eaque aperiam rem possimus minima odit quidem voluptate autem a, aliquam delectus. Inventore commodi animi minima consequatur nesciunt itaque accusamus.
+                </p>
+                <p>
+                    Wikipedia link: <a href="_blank">https://en.wikipedia.org/wiki/Bubble_sort</a>.
+                </p>
+            </section>
+
+            
+        </main>
+
+        <footer>
+            <p>
+                Created by <em>xs30snw</em> for FreeCodeCamp as a part of Responsive Web Design projects.
+            </p>
+        </footer>
+
+    </body>
+
+</html>
