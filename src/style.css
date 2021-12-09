@@ -4,8 +4,12 @@
 /* 1. Properties            */
 /* 2. Layout                */
 /* 3. Components            */
+/* 3.1. Navigation          */
+/* 3.2. Main                */
+/* 3.3. Footer              */
 /* 4. Typography            */
-/* 5. Media queries         */
+/* 5. Utility               */
+/* 6. Media queries         */
 /* ------------------------ */
 
 @import url('https://fonts.googleapis.com/css2?family=Rokkitt&family=Ubuntu+Mono');
@@ -33,55 +37,80 @@
 *, *::before, *::after {
     box-sizing: border-box;
     margin: 0;
-}
-
-html {
-    scroll-behavior: smooth;
-    font-family: var(--font-main);
-    font-size: 22px;
-    color: var(--col-da);
+    padding: 0;
 }
 
 body {
     background-color: var(--col-nl);
+}
+
+.wrapper {
+    max-width: 1440px;
+    margin: 0 auto;
+
     display: grid;
-    grid-template-columns: 1fr;
-    counter-reset: section;
+    grid-template-areas:    "   nav     "
+                            "   main    "
+                            "   footer  ";
+    grid-template-columns:      1fr;
+    grid-template-rows: auto 1fr auto;
+}
+
+.container {
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
 
 
 /* ------------------------ */
 /* 3.COMPONENTS             */
+/* 3.1.NAVIGATION           */
 /* ------------------------ */
 
 nav {
     background-color: var(--col-nu);
-    display: flex;
-    flex-direction: column;
+    grid-area: nav;
 }
 
-nav h1,
-nav h3,
-nav ul {
-    padding: 1rem 1rem 1rem 0.5rem;
+nav header {
     background-color: var(--col-da);
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 }
 
 nav ol {
-    margin: 0rem 1rem 0rem 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: .8rem;
+    padding: 1rem 1rem 1rem 2rem;
 }
 
-nav ol li {
-    margin: 0.7rem 0;
-}
+
+/* ------------------------ */
+/* 3.2.MAIN                 */
+/* ------------------------ */
 
 main {
+    grid-area: main;
     background-color: var(--col-nl);
-    padding: 1rem;
+
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
 }
 
-.main-section + .main-section {
-    margin-top: 2rem;
+.main-section {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: .5rem;
+}
+
+.main-section > *,
+.main-section::after {
+    grid-column: 1;
 }
 
 .main-section:not(:last-of-type)::after {
@@ -90,45 +119,54 @@ main {
     background-color: var(--col-nu);
     height: 0.1rem;
     width: 50%;
-    margin-left: 1rem;
-    margin-top: 0.5rem;
+    margin-left: 1rem; /* same as text indent */
 }
 
-h2 {
-    margin-bottom: 1rem;
+ul {
+    padding-left: 1rem;
 }
 
+/* Counter at the beginning of every section */
 h2::before {
     counter-increment: section;
     content: counter(section) ". ";
 }
 
-p + p {
-    margin-top: 0.3rem;
+body {    
+    counter-reset: section;
 }
 
-section > code {
-    display: block;
+.codeBlock {
     white-space: pre-wrap;
+
+    display: block;
     background-color: var(--col-li);
+    margin: 0.5rem 0;
+    padding: 0.5rem 1rem;
+    
     border-radius: 0.2rem;
     border-width: 0.05rem;
     border-style: solid;
     border-color: var(--col-nu);
-    padding: 0.5rem 1rem;
-    margin: 0.5rem 0;
+
+    cursor: text;
 }
 
-section > code:hover {
+.codeBlock:hover,
+.codeBlock:focus {
     border-color: var(--col-nd);
 }
 
-section > code:focus {
-    border-color: var(--col-nd);
-}
+
+/* ------------------------ */
+/* 3.3.FOOTER               */
+/* ------------------------ */
 
 footer {
+    grid-area: footer;
     background-color: var(--col-da);
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 }
 
 
@@ -136,95 +174,97 @@ footer {
 /* 4.TYPOGRAPHY             */
 /* ------------------------ */
 
-nav h1 span {
-    color: var(--col-nd);
-}
-
-nav h1,
-nav h3,
-nav ul {
-    text-align: center;
-    color: var(--col-nu);
-}
-
-nav h1 {
-    font-size: 1.7rem;
-}
-
-a:hover {
-    color: var(--col-nd);
-}
-
-a {
-    display: inline;
-    text-decoration: underline dashed;
-    color: inherit;
-}
-
-h2 {    
-    text-indent: 1rem;
-    text-align: center;
-}
-
-p {
-    text-indent: 1rem;
-    text-align: justify;
+html {    
+    font-size: 22px;
+    font-family: var(--font-main);
+    color: var(--col-da);
+    letter-spacing: .05rem;
 }
 
 code {
     font-family: var(--font-mono);
 }
 
-p > code {
-    color: var(--col-nd)
-}
-
+nav h1,
+nav h3,
+nav ul,
 footer {
     color: var(--col-nu);
 }
 
-footer p {
-    text-align: center;
-    margin: auto;
-    padding: 1rem;
+nav h1 {
+    font-size: 2rem;
 }
 
-footer em {
+a {
+    display: inline;
+    text-decoration: underline dashed;
+    text-decoration-thickness: 0.05rem;
+    color: inherit;
+}
+
+a:hover {
     color: var(--col-nd);
 }
 
+h2,
+p {
+    text-indent: 1rem;
+}
+
+nav h1,
+nav h3,
+nav ul,
+footer p,
+h2 {    
+    text-align: center;
+}
+
+p {
+    text-align: justify;
+}
+
+nav h1 span,
+footer em,
+p > code {
+    color: var(--col-nd)
+}
+
 
 /* ------------------------ */
-/* 5.MEDIA QUERIES          */
+/* 5.UTILITY                */
 /* ------------------------ */
 
-@media (min-width: 900px) {
-    body {
-        grid-template-columns: 1fr 3fr;
+html {
+    scroll-behavior: smooth;
+}
+
+
+/* ------------------------ */
+/* 6.MEDIA QUERIES          */
+/* ------------------------ */
+
+@media (min-width: 1024px) {
+    
+    .wrapper {
+        grid-template-areas:    "   nav     main    "
+                                "   footer  footer  ";
+        grid-template-columns: minmax(20ch, 25%) 1fr;
+        grid-template-rows: 1fr auto;
     }
 
     h2 {
         text-align: left;
     }
-
-    h2, 
-    p {
-        width: 85%;
-    }
-
-    footer {
-        grid-column: 1/-1;
-    }
 }
 
-@media (min-width: 1200px) {
-    body {
-        width: 80%;
-        margin: auto;
-        border-left: 1px solid var(--col-da);
+@media (min-width: 1440px) {
+
+    .main-section {
+        grid-template-columns: 1fr 10%;
     }
 
-    #main-doc {
-        border-right: 1px solid var(--col-nu);
+    .main-section > code {
+        grid-column: 1 / span 2;
     }
 }
